@@ -1,0 +1,16 @@
+{
+  "name": "gemastik-18-ctf-2025-writeups",
+  "version": "1.0.0",
+  "description": "HowToBeASepuh write-ups for GEMASTIK 18 (Cyber Security) CTF 2025, built with Eleventy",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+  }
+}

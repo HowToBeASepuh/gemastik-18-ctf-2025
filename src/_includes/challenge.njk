@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+<article class="writeup">
+  <nav class="crumbs"><a href="/">Home</a> <span>/</span> <span>{{ category }}</span> <span>/</span> <span>{{ title }}</span></nav>
+
+  <header class="writeup-head">
+    <div class="tags">
+      <span class="tag tag-cat tag-{{ category | lower }}">{{ category }}</span>
+      {% if part %}<span class="tag tag-part">{{ part }}</span>{% endif %}
+      {% if points %}<span class="tag tag-points">{{ points }} pts</span>{% endif %}
+      {% if solves %}<span class="tag tag-solves">{{ solves }} solves</span>{% endif %}
+    </div>
+    <h1>{{ title }}</h1>
+    {% if setter %}<p class="byline">Challenge by <strong>{{ setter }}</strong></p>{% endif %}
+    {% set who = authors[author] %}
+    {% if who %}
+    <a class="author-card" href="{{ who.url }}" rel="noopener" title="{{ who.name }} on GitHub">
+      <img class="author-avatar" src="{{ who.img }}" alt="{{ who.name }}" width="36" height="36" loading="lazy" />
+      <span class="author-meta"><span class="author-label">Write-up by</span><span class="author-name">{{ who.name }}</span></span>
+    </a>
+    {% endif %}
+    {% if description %}<blockquote class="chall-desc">{{ description | safe }}</blockquote>{% endif %}
+  </header>
+
+  {% if attachments %}
+  <section class="attachments">
+    <h2>Attachments</h2>
+    <ul class="attach-list">
+      {% for f in attachments %}
+      <li><a href="{{ f.path }}" download>⬇ {{ f.name }}</a>{% if f.note %} <span class="muted">— {{ f.note }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <div class="writeup-body">
+    {{ content | safe }}
+  </div>
+
+  {% if flag %}
+  <section class="flag-block">
+    <h2>Flag</h2>
+    <pre class="flag"><code>{{ flag }}</code></pre>
+  </section>
+  {% endif %}
+
+  <nav class="writeup-foot"><a href="/">← Back to all challenges</a></nav>
+</article>

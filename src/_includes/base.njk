@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.team }} write-ups for {{ site.title }}." />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/prism.css" />
+    <script>
+      // Apply persisted theme before paint to avoid a flash
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t) document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">
+          <span class="brand-team">{{ site.team }}</span>
+          <span class="brand-sep">/</span>
+          <span class="brand-event">{{ site.title }}</span>
+        </a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="{{ site.repo }}" rel="noopener">GitHub</a>
+          <button id="theme-toggle" type="button" aria-label="Toggle color theme">
+            <span class="theme-dark">☾</span><span class="theme-light">☀</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      {{ content | safe }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>{{ site.title }} write-ups by {{ site.team }}{% if site.authors %} ({{ site.authors | join(", ") }}){% endif %}.</p>
+        <p class="muted">Built with Eleventy · {{ site.institution }}</p>
+      </div>
+    </footer>
+
+    <script src="/assets/theme.js"></script>
+  </body>
+</html>

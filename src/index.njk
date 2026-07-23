@@ -1,0 +1,40 @@
+---
+layout: base.njk
+title: null
+---
+<section class="hero">
+  <p class="hero-kicker">{{ site.team }} · Write-Ups</p>
+  <h1 class="hero-title">{{ site.title }}</h1>
+  <p class="hero-intro">{{ site.intro }}</p>
+  {% if site.descriptionEn %}<blockquote class="hero-desc">{{ site.descriptionEn }}</blockquote>{% endif %}
+</section>
+
+<section class="index">
+  <h2>Challenges</h2>
+  {% set currentPart = "" %}
+  {% set currentCat = "" %}
+  {% for w in collections.writeups %}
+    {% if w.data.part != currentPart %}
+      {% if currentCat != "" %}</div>{% endif %}
+      {% if currentPart != "" %}{% endif %}
+      <h2 class="part-head">{{ w.data.part }}{% if w.data.part == "Quals" %} — Qualifications{% elif w.data.part == "Final" %} — Finals{% endif %}</h2>
+      {% set currentPart = w.data.part %}
+      {% set currentCat = "" %}
+    {% endif %}
+    {% if w.data.category != currentCat %}
+      {% if currentCat != "" %}</div>{% endif %}
+      <h3 class="cat-head tag-{{ w.data.category | lower }}">{{ w.data.category }}</h3>
+      <div class="card-grid">
+      {% set currentCat = w.data.category %}
+    {% endif %}
+    <a class="card" href="{{ w.url }}">
+      <span class="card-title">{{ w.data.title }}</span>
+      <span class="card-meta">
+        {% if w.data.points %}<span class="tag tag-points">{{ w.data.points }} pts</span>{% endif %}
+        {% if w.data.solves %}<span class="tag tag-solves">{{ w.data.solves }} solves</span>{% endif %}
+      </span>
+      {% if w.data.flagTeaser %}<span class="card-flag">{{ w.data.flagTeaser }}</span>{% endif %}
+    </a>
+  {% endfor %}
+  {% if collections.writeups.length %}</div>{% endif %}
+</section>

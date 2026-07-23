@@ -1,0 +1,45 @@
+/* Minimal Prism token theme, theme-aware via CSS variables.
+   Token classes emitted by @11ty/eleventy-plugin-syntaxhighlight. */
+:root {
+  --tok-comment: #6a737d;
+  --tok-punct: #24292e;
+  --tok-keyword: #d73a49;
+  --tok-string: #032f62;
+  --tok-number: #005cc5;
+  --tok-function: #6f42c1;
+  --tok-operator: #d73a49;
+  --tok-class: #e36209;
+  --tok-builtin: #005cc5;
+}
+:root[data-theme="dark"] {
+  --tok-comment: #8b949e;
+  --tok-punct: #c9d1d9;
+  --tok-keyword: #ff7b72;
+  --tok-string: #a5d6ff;
+  --tok-number: #79c0ff;
+  --tok-function: #d2a8ff;
+  --tok-operator: #ff7b72;
+  --tok-class: #ffa657;
+  --tok-builtin: #79c0ff;
+}
+
+.token.comment, .token.prolog, .token.doctype, .token.cdata { color: var(--tok-comment); font-style: italic; }
+.token.punctuation { color: var(--tok-punct); }
+.token.namespace { opacity: 0.7; }
+.token.keyword, .token.important, .token.atrule, .token.rule { color: var(--tok-keyword); }
+.token.string, .token.char, .token.attr-value, .token.regex { color: var(--tok-string); }
+.token.number, .token.boolean, .token.constant, .token.symbol { color: var(--tok-number); }
+.token.function, .token.method { color: var(--tok-function); }
+.token.operator, .token.entity, .token.url { color: var(--tok-operator); }
+.token.class-name, .token.tag { color: var(--tok-class); }
+.token.builtin, .token.property, .token.attr-name, .token.selector { color: var(--tok-builtin); }
+.token.deleted { color: #d73a49; }
+.token.inserted { color: #22863a; }
+.token.bold { font-weight: bold; }
+.token.italic { font-style: italic; }
+
+/* Line-number gutter support (if enabled) */
+pre.line-numbers { position: relative; padding-left: 3.2em; counter-reset: linenumber; }
+.line-numbers .line-numbers-rows { position: absolute; pointer-events: none; top: 16px; left: 0; width: 2.6em; border-right: 1px solid var(--border); }
+.line-numbers-rows > span { display: block; counter-increment: linenumber; }
+.line-numbers-rows > span::before { content: counter(linenumber); color: var(--fg-muted); display: block; padding-right: 0.6em; text-align: right; font-size: 0.85em; }
