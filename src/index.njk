@@ -17,7 +17,7 @@ title: null
     {% if w.data.part != currentPart %}
       {% if currentCat != "" %}</div>{% endif %}
       {% if currentPart != "" %}{% endif %}
-      <h2 class="part-head">{{ w.data.part }}{% if w.data.part == "Quals" %} — Qualifications{% elif w.data.part == "Final" %} — Finals{% endif %}</h2>
+      <h2 class="part-head">{% if w.data.part == "Quals" %}Qualifications{% elif w.data.part == "Final" %}Finals{% else %}{{ w.data.part }}{% endif %}</h2>
       {% set currentPart = w.data.part %}
       {% set currentCat = "" %}
     {% endif %}
