@@ -18,4 +18,6 @@ export default {
   intro:
     "HowToBeASepuh's write-ups for the Cyber Security (CTF) division of GEMASTIK 18, split into the Qualifications and Finals rounds.",
   repo: "https://github.com/HowToBeASepuh/gemastik-18-ctf-2025",
+  // Canonical origin for absolute URLs (sitemap); no custom domain in use.
+  origin: "https://howtobeasepuh.github.io",
 };
